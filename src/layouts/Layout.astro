@@ -24,7 +24,15 @@ const siteUrl = 'https://cursedtours.com';
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cursed Tours">
+  {canonical && <meta property="og:url" content={canonical} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"}>
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

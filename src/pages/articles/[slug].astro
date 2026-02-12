@@ -71,6 +71,7 @@ const breadcrumbLd = {
   title={`${article.title} | Cursed Tours`}
   description={article.excerpt}
   canonical={`https://cursedtours.com/articles/${article.slug}/`}
+  ogImage={article.featuredImage?.sourceUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
