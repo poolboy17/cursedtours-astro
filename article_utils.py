@@ -55,8 +55,11 @@ MOJIBAKE_MAP = {
     '\u00c3\u00bc': 'ü', '\u00c3\u00b1': 'ñ', '\u00c3\u00a7': 'ç',
     '\u00c3\u00ad': 'í', '\u00c3\u00ab': 'ë', '\u00c3\u00ae': 'î',
     '\u00c3\u2030': 'É', '\u00c3\u0089': 'É',
-    '\u00e2\u20ac\u201c': '—', '\u00e2\u20ac\u2122': '\u2019',
-    '\u00e2\u20ac\u0153': '\u201c', '\u00e2\u20ac\u00a6': '…',
+    '\u00e2\u20ac\u201c': '\u2013',  # en dash
+    '\u00e2\u20ac\u201d': '\u2014',  # em dash (right double quote variant)
+    '\u00e2\u20ac\u2122': '\u2019',  # right single quote
+    '\u00e2\u20ac\u0153': '\u201c',  # left double quote
+    '\u00e2\u20ac\u00a6': '\u2026',  # ellipsis
 }
 
 
