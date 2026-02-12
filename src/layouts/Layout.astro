@@ -103,14 +103,49 @@ const siteUrl = 'https://cursedtours.com';
         </nav>
         
         <!-- Mobile menu button -->
-        <button class="md:hidden p-2" style="color: #a89bb8;" aria-label="Menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="mobile-menu-btn" class="md:hidden p-2" style="color: #a89bb8;" aria-label="Menu" aria-expanded="false">
+          <!-- Hamburger icon -->
+          <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close icon -->
+          <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
+
+      <!-- Mobile menu panel -->
+      <nav id="mobile-menu" class="hidden md:hidden border-t pb-4" style="border-color: #3d2a4d;">
+        <div class="flex flex-col gap-1 pt-3">
+          <a href="/new-orleans-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">New Orleans</a>
+          <a href="/savannah-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Savannah</a>
+          <a href="/salem-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Salem</a>
+          <a href="/charleston-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Charleston</a>
+          <a href="/st-augustine-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">St. Augustine</a>
+          <div class="border-t mt-2 pt-2" style="border-color: #3d2a4d;">
+            <a href="/destinations/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">All Destinations</a>
+            <a href="/articles/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">Articles</a>
+            <a href="/experiences/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">Experiences</a>
+          </div>
+        </div>
+      </nav>
     </div>
   </header>
+
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
+
+    btn?.addEventListener('click', () => {
+      const isOpen = menu?.classList.toggle('hidden') === false;
+      openIcon?.classList.toggle('hidden', isOpen);
+      closeIcon?.classList.toggle('hidden', !isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
 
   <!-- Main Content -->
   <main class="flex-grow">
