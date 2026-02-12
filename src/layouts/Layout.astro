@@ -116,24 +116,76 @@ const siteUrl = 'https://cursedtours.com';
       </div>
 
       <!-- Mobile menu panel -->
-      <nav id="mobile-menu" class="hidden md:hidden border-t pb-4" style="border-color: #3d2a4d;">
-        <div class="flex flex-col gap-1 pt-3">
-          <a href="/new-orleans-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">New Orleans</a>
-          <a href="/savannah-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Savannah</a>
-          <a href="/salem-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Salem</a>
-          <a href="/charleston-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">Charleston</a>
-          <a href="/st-augustine-ghost-tours/" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors" style="color: #a89bb8;">St. Augustine</a>
-          <div class="border-t mt-2 pt-2" style="border-color: #3d2a4d;">
-            <a href="/destinations/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">All Destinations</a>
-            <a href="/articles/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">Articles</a>
-            <a href="/experiences/" class="px-3 py-2 rounded-lg text-sm font-medium block transition-colors" style="color: #a89bb8;">Experiences</a>
+      <nav id="mobile-menu" class="hidden md:hidden border-t pb-4 overflow-y-auto" style="border-color: #3d2a4d; max-height: calc(100vh - 4rem);">
+        <div class="flex flex-col pt-2">
+
+          <!-- Cities accordion -->
+          <button class="mobile-accordion flex items-center justify-between px-4 py-3 text-sm font-semibold text-white w-full text-left" aria-expanded="false">
+            Ghost Tour Cities
+            <svg class="accordion-chevron w-4 h-4 transition-transform duration-200" style="color: #7a6b8a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-panel hidden">
+            <p class="px-6 pt-1 pb-2 text-xs font-semibold uppercase tracking-wider" style="color: #7c3aed;">Top US Cities</p>
+            <a href="/new-orleans-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">New Orleans</a>
+            <a href="/salem-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Salem</a>
+            <a href="/charleston-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Charleston</a>
+            <a href="/savannah-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Savannah</a>
+            <a href="/boston-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Boston</a>
+            <a href="/chicago-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Chicago</a>
+
+            <p class="px-6 pt-3 pb-2 text-xs font-semibold uppercase tracking-wider" style="color: #7c3aed;">International</p>
+            <a href="/edinburgh-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Edinburgh</a>
+            <a href="/london-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">London</a>
+            <a href="/paris-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Paris</a>
+            <a href="/rome-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Rome</a>
+            <a href="/dublin-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Dublin</a>
+
+            <p class="px-6 pt-3 pb-2 text-xs font-semibold uppercase tracking-wider" style="color: #7c3aed;">More US Cities</p>
+            <a href="/new-york-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">New York</a>
+            <a href="/st-augustine-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">St. Augustine</a>
+            <a href="/san-antonio-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">San Antonio</a>
+            <a href="/nashville-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Nashville</a>
+            <a href="/austin-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Austin</a>
+            <a href="/denver-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Denver</a>
+            <a href="/washington-dc-ghost-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Washington DC</a>
           </div>
+
+          <div class="border-t" style="border-color: #3d2a4d;"></div>
+
+          <!-- Experiences accordion -->
+          <button class="mobile-accordion flex items-center justify-between px-4 py-3 text-sm font-semibold text-white w-full text-left" aria-expanded="false">
+            Experiences
+            <svg class="accordion-chevron w-4 h-4 transition-transform duration-200" style="color: #7a6b8a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-panel hidden">
+            <a href="/experiences/walking-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Walking Tours</a>
+            <a href="/experiences/cemetery-tours/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Cemetery Tours</a>
+            <a href="/experiences/pub-crawls/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Haunted Pub Crawls</a>
+            <a href="/experiences/paranormal-investigations/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">Paranormal Investigations</a>
+            <a href="/experiences/true-crime/" class="block px-6 py-2 text-sm transition-colors" style="color: #a89bb8;">True Crime Tours</a>
+            <a href="/experiences/" class="block px-6 py-2 text-sm font-medium transition-colors" style="color: #c084fc;">View All Experiences →</a>
+          </div>
+
+          <div class="border-t" style="border-color: #3d2a4d;"></div>
+
+          <!-- Direct links -->
+          <a href="/destinations/" class="flex items-center justify-between px-4 py-3 text-sm font-semibold text-white transition-colors">Destinations</a>
+          <div class="border-t" style="border-color: #3d2a4d;"></div>
+          <a href="/articles/" class="flex items-center justify-between px-4 py-3 text-sm font-semibold text-white transition-colors">Articles</a>
+          <div class="border-t" style="border-color: #3d2a4d;"></div>
+          <a href="/about/" class="flex items-center justify-between px-4 py-3 text-sm font-semibold text-white transition-colors">About</a>
+
         </div>
       </nav>
     </div>
   </header>
 
   <script>
+    // Hamburger toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     const openIcon = document.getElementById('menu-open-icon');
@@ -144,6 +196,31 @@ const siteUrl = 'https://cursedtours.com';
       openIcon?.classList.toggle('hidden', isOpen);
       closeIcon?.classList.toggle('hidden', !isOpen);
       btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Accordion toggles
+    document.querySelectorAll('.mobile-accordion').forEach(button => {
+      button.addEventListener('click', () => {
+        const panel = button.nextElementSibling as HTMLElement;
+        const chevron = button.querySelector('.accordion-chevron') as HTMLElement;
+        const isOpen = !panel.classList.contains('hidden');
+
+        // Close all other accordions
+        document.querySelectorAll('.mobile-accordion').forEach(other => {
+          const otherPanel = other.nextElementSibling as HTMLElement;
+          const otherChevron = other.querySelector('.accordion-chevron') as HTMLElement;
+          if (other !== button && otherPanel) {
+            otherPanel.classList.add('hidden');
+            otherChevron?.style.setProperty('transform', 'rotate(0deg)');
+            other.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle clicked accordion
+        panel.classList.toggle('hidden');
+        chevron?.style.setProperty('transform', isOpen ? 'rotate(0deg)' : 'rotate(180deg)');
+        button.setAttribute('aria-expanded', String(!isOpen));
+      });
     });
   </script>
 
