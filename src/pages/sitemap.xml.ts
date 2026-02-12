@@ -19,7 +19,7 @@ export const GET: APIRoute = async () => {
   ];
 
   const destinations = Object.keys(DESTINATIONS);
-  const utilities = ['about', 'contact', 'editorial-policy'];
+  const utilities = ['about', 'contact', 'editorial-policy', 'privacy-policy', 'terms'];
   const articles = getAllArticles();
   const categories = Object.keys(CATEGORIES);
 
