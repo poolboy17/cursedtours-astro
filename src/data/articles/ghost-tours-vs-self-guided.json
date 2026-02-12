@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1200&h=630&fit=crop&q=80",
-    "altText": "Tour guide leading a group through a historic district"
-  }
+    "altText": "Tour guide leading a group through a historic district",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 865,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

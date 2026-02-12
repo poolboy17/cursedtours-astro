@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=1200&h=630&fit=crop&q=80",
-    "altText": "New Orleans French Quarter street with wrought iron balconies and gas lamps at night"
-  }
+    "altText": "New Orleans French Quarter street with wrought iron balconies and gas lamps at night",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 1347,
+  "readingTime": 5,
+  "articleType": "pillar"
 }

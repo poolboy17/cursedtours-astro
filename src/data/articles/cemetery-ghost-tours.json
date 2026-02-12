@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1758612124421-0f4866459e68?w=1200&h=630&fit=crop&q=80",
-    "altText": "Spooky church and graveyard at night with eerie atmosphere"
-  }
+    "altText": "Spooky church and graveyard at night with eerie atmosphere",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 691,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

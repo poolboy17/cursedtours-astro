@@ -26,6 +26,9 @@ const jsonLd = {
   "image": article.featuredImage?.sourceUrl,
   "datePublished": article.date,
   "dateModified": article.modified || article.date,
+  ...(article.wordCount && { "wordCount": article.wordCount }),
+  ...(categoryInfo && { "articleSection": categoryInfo.name }),
+  ...(article.keywords?.length && { "keywords": article.keywords }),
   "author": {
     "@type": "Organization",
     "name": "Cursed Tours",
@@ -72,6 +75,8 @@ const breadcrumbLd = {
   description={article.excerpt}
   canonical={`https://cursedtours.com/articles/${article.slug}/`}
   ogImage={article.featuredImage?.sourceUrl}
+  ogImageWidth={article.featuredImage?.width}
+  ogImageHeight={article.featuredImage?.height}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
@@ -124,7 +129,7 @@ const breadcrumbLd = {
       <div class="flex items-center gap-4 text-sm text-[#a89bb8]">
         <time datetime={article.date}>{publishDate}</time>
         <span class="text-gray-600">·</span>
-        <span>{Math.ceil(article.content.split(/\s+/).length / 250)} min read</span>
+        <span>{article.readingTime || Math.ceil(article.content.split(/\s+/).length / 250)} min read</span>
       </div>
     </div>
   </section>

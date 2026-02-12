@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&h=630&fit=crop&q=80",
-    "altText": "Dimly lit old pub interior with warm candlelight"
-  }
+    "altText": "Dimly lit old pub interior with warm candlelight",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 701,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

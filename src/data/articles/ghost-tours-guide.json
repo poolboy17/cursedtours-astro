@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1200&h=630&fit=crop&q=80",
-    "altText": "Group of people on a guided walking tour at night"
-  }
+    "altText": "Group of people on a guided walking tour at night",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 2082,
+  "readingTime": 8,
+  "articleType": "pillar"
 }

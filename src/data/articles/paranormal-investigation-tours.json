@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?w=1200&h=630&fit=crop&q=80",
-    "altText": "Dark atmospheric room with mysterious shadows for investigation"
-  }
+    "altText": "Dark atmospheric room with mysterious shadows for investigation",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 633,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

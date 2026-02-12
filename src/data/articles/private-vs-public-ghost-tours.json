@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?w=1200&h=630&fit=crop&q=80",
-    "altText": "Lantern glowing warmly on an exclusive private tour path"
-  }
+    "altText": "Lantern glowing warmly on an exclusive private tour path",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 680,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&h=630&fit=crop&q=80",
-    "altText": "Vintage trolley bus on city streets at night"
-  }
+    "altText": "Vintage trolley bus on city streets at night",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 593,
+  "readingTime": 2,
+  "articleType": "cluster"
 }

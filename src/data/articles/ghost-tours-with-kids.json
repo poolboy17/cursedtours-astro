@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1476234251651-f353703a034d?w=1200&h=630&fit=crop&q=80",
-    "altText": "Family walking together through a charming historic street"
-  }
+    "altText": "Family walking together through a charming historic street",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 851,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

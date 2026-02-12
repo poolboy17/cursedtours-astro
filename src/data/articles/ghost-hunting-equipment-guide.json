@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop&q=80",
-    "altText": "Flashlight beam cutting through darkness during investigation"
-  }
+    "altText": "Flashlight beam cutting through darkness during investigation",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 592,
+  "readingTime": 2,
+  "articleType": "cluster"
 }

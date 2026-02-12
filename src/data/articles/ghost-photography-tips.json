@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&h=630&fit=crop&q=80",
-    "altText": "Camera on tripod capturing long exposure in the dark"
-  }
+    "altText": "Camera on tripod capturing long exposure in the dark",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 563,
+  "readingTime": 2,
+  "articleType": "cluster"
 }

@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=1200&h=630&fit=crop&q=80",
-    "altText": "Above-ground tombs in St. Louis Cemetery No. 1 New Orleans"
-  }
+    "altText": "Above-ground tombs in St. Louis Cemetery No. 1 New Orleans",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 1260,
+  "readingTime": 5,
+  "articleType": "pillar"
 }

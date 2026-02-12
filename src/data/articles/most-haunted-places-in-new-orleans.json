@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=1200&h=630&fit=crop&q=80",
-    "altText": "Atmospheric New Orleans cemetery with above-ground tombs at twilight"
-  }
+    "altText": "Atmospheric New Orleans cemetery with above-ground tombs at twilight",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 1377,
+  "readingTime": 6,
+  "articleType": "pillar"
 }

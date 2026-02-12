@@ -4,9 +4,11 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
 }
 
-const { title, description = "Explore ghost tours across America's most haunted cities.", canonical, ogImage } = Astro.props;
+const { title, description = "Explore ghost tours across America's most haunted cities.", canonical, ogImage, ogImageWidth, ogImageHeight } = Astro.props;
 const siteUrl = 'https://cursedtours.com';
 ---
 
@@ -27,6 +29,8 @@ const siteUrl = 'https://cursedtours.com';
   <meta property="og:site_name" content="Cursed Tours">
   {canonical && <meta property="og:url" content={canonical} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
+  {ogImage && ogImageWidth && <meta property="og:image:width" content={String(ogImageWidth)} />}
+  {ogImage && ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"}>

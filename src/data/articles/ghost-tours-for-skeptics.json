@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1200&h=630&fit=crop&q=80",
-    "altText": "Person holding flashlight in a dark mysterious corridor"
-  }
+    "altText": "Person holding flashlight in a dark mysterious corridor",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 628,
+  "readingTime": 3,
+  "articleType": "cluster"
 }

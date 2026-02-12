@@ -11,6 +11,8 @@ export interface Article {
   featuredImage: {
     sourceUrl: string;
     altText: string;
+    width?: number;
+    height?: number;
   };
   categories: {
     id: number;
@@ -18,6 +20,10 @@ export interface Article {
     name: string;
     description?: string;
   }[];
+  wordCount?: number;
+  readingTime?: number;
+  articleType?: 'pillar' | 'cluster';
+  keywords?: string[];
 }
 
 export interface CategoryInfo {
@@ -71,6 +77,9 @@ export function getAllArticles(): Article[] {
   _cache = files.map(file => {
     const raw = readFileSync(join(dir, file), 'utf-8');
     const data = JSON.parse(raw);
+    const img = typeof data.featuredImage === 'string'
+      ? { sourceUrl: data.featuredImage, altText: data.title }
+      : data.featuredImage;
     return {
       title: data.title,
       slug: data.slug,
@@ -78,12 +87,14 @@ export function getAllArticles(): Article[] {
       excerpt: data.excerpt || '',
       date: data.date,
       modified: data.modified,
-      featuredImage: typeof data.featuredImage === 'string'
-        ? { sourceUrl: data.featuredImage, altText: data.title }
-        : data.featuredImage,
+      featuredImage: img,
       categories: data.categories.map((c: any) =>
         typeof c === 'string' ? { id: 0, slug: c, name: c } : c
       ),
+      wordCount: data.wordCount,
+      readingTime: data.readingTime,
+      articleType: data.articleType,
+      keywords: data.keywords,
     };
   }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 

@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=1200&h=630&fit=crop&q=80",
-    "altText": "Misty New Orleans French Quarter street at night with gas lamps"
-  }
+    "altText": "Misty New Orleans French Quarter street at night with gas lamps",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 1667,
+  "readingTime": 7,
+  "articleType": "pillar"
 }

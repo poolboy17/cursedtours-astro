@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=630&fit=crop&q=80",
-    "altText": "Comfortable walking shoes ready for an outdoor adventure"
-  }
+    "altText": "Comfortable walking shoes ready for an outdoor adventure",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 536,
+  "readingTime": 2,
+  "articleType": "cluster"
 }

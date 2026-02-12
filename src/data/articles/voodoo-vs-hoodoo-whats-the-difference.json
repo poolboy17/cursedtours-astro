@@ -20,6 +20,11 @@
   "pageType": "unassigned",
   "featuredImage": {
     "sourceUrl": "https://images.unsplash.com/photo-1509281373149-e957c6296406?w=1200&h=630&fit=crop&q=80",
-    "altText": "Spiritual candles and ritual items representing voodoo and hoodoo traditions"
-  }
+    "altText": "Spiritual candles and ritual items representing voodoo and hoodoo traditions",
+    "width": 1200,
+    "height": 630
+  },
+  "wordCount": 1008,
+  "readingTime": 4,
+  "articleType": "cluster"
 }

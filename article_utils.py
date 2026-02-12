@@ -77,6 +77,7 @@ class Article:
     article_id: int = 0
     date: str = "2026-02-12 12:00:00"
     article_type: str = "cluster"  # "cluster" (500w min) or "pillar" (1200w min)
+    keywords: list = None  # SEO keywords for JSON-LD
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -110,6 +111,18 @@ def _get_hub_url(art, explicit_hub=None):
 def _clean_word_count(content):
     text = re.sub(r'<[^>]+>', ' ', content)
     return len(text.split())
+
+
+def _extract_image_dimensions(url):
+    """Extract width/height from Unsplash URL params (w=, h=)."""
+    w = h = None
+    w_match = re.search(r'[?&]w=(\d+)', url)
+    h_match = re.search(r'[?&]h=(\d+)', url)
+    if w_match:
+        w = int(w_match.group(1))
+    if h_match:
+        h = int(h_match.group(1))
+    return w, h
 
 
 def _has_mojibake(text):
@@ -492,6 +505,18 @@ def _editorial_fix(articles, hub_url=None):
 def _write_to_disk(articles):
     os.makedirs(ARTICLE_DIR, exist_ok=True)
     for i, art in enumerate(articles):
+        wc = _clean_word_count(art.content)
+        w, h = _extract_image_dimensions(art.image_url)
+
+        img_data = {
+            "sourceUrl": art.image_url,
+            "altText": art.image_alt,
+        }
+        if w:
+            img_data["width"] = w
+        if h:
+            img_data["height"] = h
+
         data = {
             "title": art.title,
             "slug": art.slug,
@@ -503,7 +528,8 @@ def _write_to_disk(articles):
             "modified": art.date,
             "content": art.content,
             "excerpt": art.excerpt,
-            "wordCount": _clean_word_count(art.content),
+            "wordCount": wc,
+            "readingTime": max(1, round(wc / 250)),
             "articleType": art.article_type,
             "categories": [{
                 "id": art.category_id or 0,
@@ -512,11 +538,12 @@ def _write_to_disk(articles):
                 "description": art.category_description,
             }],
             "pageType": "unassigned",
-            "featuredImage": {
-                "sourceUrl": art.image_url,
-                "altText": art.image_alt,
-            },
+            "featuredImage": img_data,
         }
+
+        if art.keywords:
+            data["keywords"] = art.keywords
+
         with open(os.path.join(ARTICLE_DIR, f"{art.slug}.json"), "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
@@ -725,6 +752,87 @@ def repair_all():
 
 # ─── CLI Audit ───────────────────────────────────────────────────────────────
 
+def backfill_enrichment():
+    """Add wordCount, readingTime, articleType, and image dimensions to all existing articles."""
+    print(f"\n  Backfilling enrichment fields...\n")
+    updated = 0
+
+    for fname in sorted(os.listdir(ARTICLE_DIR)):
+        if not fname.endswith('.json'):
+            continue
+        path = os.path.join(ARTICLE_DIR, fname)
+        with open(path) as f:
+            d = json.load(f)
+
+        changes = []
+        content = d.get('content', '')
+        wc = _clean_word_count(content)
+        rt = max(1, round(wc / 250))
+
+        # wordCount
+        if d.get('wordCount') != wc:
+            d['wordCount'] = wc
+            changes.append(f"wordCount={wc}")
+
+        # readingTime
+        if d.get('readingTime') != rt:
+            d['readingTime'] = rt
+            changes.append(f"readingTime={rt}")
+
+        # articleType — pillar if longest in category, else cluster
+        if 'articleType' not in d:
+            d['articleType'] = 'pillar' if wc >= 1200 else 'cluster'
+            changes.append(f"articleType={d['articleType']}")
+
+        # Image dimensions from Unsplash URL
+        img = d.get('featuredImage', {})
+        img_url = img.get('sourceUrl', '')
+        if img_url and 'width' not in img:
+            w, h = _extract_image_dimensions(img_url)
+            if w:
+                img['width'] = w
+                changes.append(f"width={w}")
+            if h:
+                img['height'] = h
+                changes.append(f"height={h}")
+            d['featuredImage'] = img
+
+        if changes:
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(d, f, indent=2, ensure_ascii=False)
+            print(f"    ✓ {d['slug']}: {', '.join(changes)}")
+            updated += 1
+
+    print(f"\n  Updated {updated} articles.\n")
+    return updated
+
+
+def verify_build():
+    """Run npm build and check for errors. Returns True if build succeeds."""
+    import subprocess
+    print(f"\n  Running build verification...")
+    result = subprocess.run(
+        ['npx', 'astro', 'build'],
+        capture_output=True, text=True,
+        cwd=os.path.dirname(os.path.abspath(__file__))
+    )
+    if result.returncode == 0:
+        # Extract page count
+        for line in result.stdout.split('\n'):
+            if 'page(s) built' in line:
+                print(f"  ✓ Build passed: {line.strip()}")
+                return True
+        print(f"  ✓ Build passed.")
+        return True
+    else:
+        print(f"  ✗ Build FAILED:")
+        # Show relevant error lines
+        for line in (result.stderr + result.stdout).split('\n'):
+            if 'error' in line.lower() or 'Error' in line:
+                print(f"      {line.strip()}")
+        return False
+
+
 def audit_existing():
     """Full audit of all existing article JSON files."""
     print(f"\n  Auditing {ARTICLE_DIR}/\n")
@@ -808,6 +916,16 @@ def audit_existing():
         if broken:
             issues.append(f"{len(broken)} broken internal link(s): {broken[0]}")
 
+        # Enrichment fields
+        if 'wordCount' not in d:
+            issues.append("missing wordCount")
+        if 'readingTime' not in d:
+            issues.append("missing readingTime")
+        if 'articleType' not in d:
+            issues.append("missing articleType")
+        if img_url and 'width' not in img and 'w=' in img_url:
+            issues.append("image dimensions not extracted")
+
         if issues:
             errors.append((slug, issues))
 
@@ -827,4 +945,9 @@ if __name__ == "__main__":
         repair_hub_links()
     elif '--fix-all' in sys.argv:
         repair_all()
+    elif '--backfill' in sys.argv:
+        backfill_enrichment()
+    elif '--build' in sys.argv:
+        verify_build()
+        sys.exit(0)
     audit_existing()
